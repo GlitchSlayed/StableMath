@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  experimental: {
-    typedRoutes: true
-  }
+  output: 'export'
 }
 
 export default nextConfig
