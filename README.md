@@ -33,7 +33,7 @@ See `content-guide.md` for curriculum additions and `question-guide.md` for new 
 
 ## Deploying to Vercel (free Hobby plan)
 
-StableMath is configured for static export, so it can be deployed on Vercel's free Hobby tier with no server runtime.
+StableMath is configured to deploy on Vercel using the standard Next.js build output while still pre-rendering its content statically.
 
 1. Push this repository to GitHub.
 2. Create a free Vercel account and choose **Add New Project**.
@@ -42,7 +42,7 @@ StableMath is configured for static export, so it can be deployed on Vercel's fr
 5. Leave the build settings at their defaults, or confirm these values:
    - Install command: `npm install`
    - Build command: `npm run build`
-   - Output directory: `out`
+   - Output directory: leave unset (Vercel will use the default Next.js build output)
 6. Click **Deploy**.
 
 ### What to expect
