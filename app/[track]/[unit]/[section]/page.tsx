@@ -1,0 +1,56 @@
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { ProgressTracker } from '@/components/curriculum/ProgressTracker'
+import { SourceList } from '@/components/curriculum/SourceList'
+import { Badge, Button, Card } from '@/components/ui'
+import { getSection, getUnit, trackRegistry } from '@/content/tracks'
+
+export function generateStaticParams() {
+  return Object.values(trackRegistry).flatMap((track) =>
+    track.units.flatMap((unit) => unit.sections.map((section) => ({ track: track.slug, unit: unit.slug, section: section.slug })))
+  )
+}
+
+export const dynamicParams = false
+
+export default function SectionPage({ params }: { params: { track: string; unit: string; section: string } }) {
+  const track = trackRegistry[params.track]
+  const unit = getUnit(params.track, params.unit)
+  const section = getSection(params.track, params.unit, params.section)
+  if (!track || !unit || !section) notFound()
+
+  return (
+    <div className='space-y-8'>
+      <div className='space-y-3'>
+        <Badge>{unit.title}</Badge>
+        <h1 className='text-4xl'>{section.title}</h1>
+        <p className='max-w-3xl text-[var(--text-secondary)]'>{section.summary}</p>
+      </div>
+
+      <ProgressTracker completed={0} total={3} accuracy={0} recommendation='Read the concept, connect the math, then use unlimited practice.' />
+
+      <Card className='space-y-4'>
+        <h2 className='text-2xl'>Conceptual page</h2>
+        <div className='space-y-4 text-[var(--text-secondary)]'>
+          {section.conceptualOverview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </div>
+      </Card>
+
+      <Card id='math' className='space-y-4'>
+        <h2 className='text-2xl'>Math tied in</h2>
+        <ul className='space-y-3 text-[var(--text-secondary)]'>
+          {section.mathConnections.map((connection) => <li key={connection} className='list-disc pl-2 ml-5'>{connection}</li>)}
+        </ul>
+      </Card>
+
+      <Card className='space-y-4'>
+        <h2 className='text-2xl'>Source alignment</h2>
+        <SourceList sources={section.sources} />
+      </Card>
+
+      <Link href={`/${track.slug}/${unit.slug}/${section.slug}/practice`}>
+        <Button>Open unlimited practice</Button>
+      </Link>
+    </div>
+  )
+}
