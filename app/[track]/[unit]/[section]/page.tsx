@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ProgressTracker } from '@/components/curriculum/ProgressTracker'
 import { SourceList } from '@/components/curriculum/SourceList'
+import { InlineMathText } from '@/components/math/InlineMathText'
 import { Badge, Button, Card } from '@/components/ui'
 import { getSection, getUnit, trackRegistry } from '@/content/tracks'
 
@@ -33,15 +34,15 @@ export default async function SectionPage({ params }: { params: Promise<{ track:
       <Card className='space-y-4'>
         <h2 className='text-2xl'>Conceptual page</h2>
         <div className='space-y-4 text-[var(--text-secondary)]'>
-          {section.conceptualOverview.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {section.conceptualOverview.map((paragraph) => <InlineMathText key={paragraph} text={paragraph} />)}
         </div>
       </Card>
 
       <Card id='math' className='space-y-4'>
         <h2 className='text-2xl'>Math tied in</h2>
-        <ul className='space-y-3 text-[var(--text-secondary)]'>
-          {section.mathConnections.map((connection) => <li key={connection} className='list-disc pl-2 ml-5'>{connection}</li>)}
-        </ul>
+        <div className='space-y-4 text-[var(--text-secondary)]'>
+          {section.mathConnections.map((connection) => <InlineMathText key={connection} text={connection} />)}
+        </div>
       </Card>
 
       <Card className='space-y-4'>
