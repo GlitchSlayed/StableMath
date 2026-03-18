@@ -1,0 +1,19 @@
+---
+title: Gradient descent
+topicId: gradient-descent
+track: cs-ml-ai
+summary: Iteratively improve parameters by moving opposite the gradient.
+objectives:
+  - Interpret gradients as local steepness
+  - Apply the update rule correctly
+  - Reason about learning-rate stability
+practiceTemplateIds:
+  - opt-gradient-descent-1
+  - opt-gradient-descent-2
+---
+
+# Gradient descent
+
+Gradient descent updates parameters using \(x_{t+1}=x_t-\eta \nabla f(x_t)\). The minus sign matters: it points us downhill on the loss surface.
+
+A small learning rate improves stability but can be slow. A large learning rate can overshoot the minimum or diverge.
