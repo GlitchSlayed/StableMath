@@ -8,6 +8,8 @@ export function generateStaticParams() {
   return Object.keys(tracks).map((track) => ({ track }))
 }
 
+export const dynamicParams = false
+
 export default function TrackPage({ params }: { params: { track: keyof typeof tracks } }) {
   const track = tracks[params.track]
   if (!track) notFound()

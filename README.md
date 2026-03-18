@@ -27,3 +27,34 @@ npm run dev
 ## Contributing
 
 See `content-guide.md` for curriculum additions and `question-guide.md` for new question templates.
+
+## Deploying to Vercel (free Hobby plan)
+
+StableMath is configured for static export, so it can be deployed on Vercel's free Hobby tier with no server runtime.
+
+1. Push this repository to GitHub.
+2. Create a free Vercel account and choose **Add New Project**.
+3. Import the GitHub repository.
+4. Keep the detected framework as **Next.js**.
+5. Leave the build settings at their defaults, or confirm these values:
+   - Install command: `npm install`
+   - Build command: `npm run build`
+   - Output directory: `out`
+6. Click **Deploy**.
+
+### What to expect
+
+- Every pull request can get a preview deployment from Vercel automatically.
+- Every push to your production branch can publish a fresh static build.
+- Because the app exports static files, there is no paid serverless usage requirement for the site itself.
+
+### Recommended Vercel project settings
+
+- Framework preset: `Next.js`
+- Node.js version: `20.x`
+- Production branch: `main` (or your default branch)
+- Root directory: repository root
+
+### GitHub Actions
+
+The CI workflow now checks types, runs unit tests, builds the static export, installs Playwright's Chromium browser, and runs the end-to-end suite. That helps catch Vercel-breaking changes before deployment.
