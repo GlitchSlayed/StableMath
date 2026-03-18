@@ -1,0 +1,21 @@
+---
+title: Bayes' theorem
+topicId: bayes
+track: cs-ml-ai
+summary: Reverse a conditional probability by combining priors and evidence.
+objectives:
+  - Write Bayes' theorem from memory
+  - Compute posterior probabilities
+  - Avoid conditioning-direction mistakes
+practiceTemplateIds:
+  - prob-bayes-1
+  - prob-bayes-2
+---
+
+# Bayes' theorem
+
+Bayes' theorem updates belief after observing evidence. In ML, this appears in naive Bayes classifiers, diagnostic reasoning, and posterior inference.
+
+\[P(A|B)=\frac{P(B|A)P(A)}{P(B)}\]
+
+The denominator is a normalization term. It ensures the posterior is a valid probability after accounting for every way the evidence could occur.
