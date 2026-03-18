@@ -1,1 +1,1 @@
-export const TopicChip = ({ label }: { label: string }) => <span className='inline-flex rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-sm text-[var(--text-secondary)]'>{label}</span>
+export const TopicChip = ({ label }: { label: string }) => <span className='inline-flex shrink-0 whitespace-nowrap rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-2 text-sm text-[var(--text-secondary)]'>{label}</span>
