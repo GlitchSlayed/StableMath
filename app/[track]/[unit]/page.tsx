@@ -1,35 +1,34 @@
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Button, Card } from '@/components/ui'
-import { engineeringTrack, csmlTrack } from '@/content/tracks'
-
-const tracks = { engineering: engineeringTrack, 'cs-ml-ai': csmlTrack }
+import { ProgressTracker } from '@/components/curriculum/ProgressTracker'
+import { SectionCard } from '@/components/curriculum/SectionCard'
+import { Card } from '@/components/ui'
+import { getUnit, trackRegistry } from '@/content/tracks'
 
 export function generateStaticParams() {
-  return Object.values(tracks).flatMap((track) => track.units.map((unit) => ({ track: track.slug, unit: unit.slug })))
+  return Object.values(trackRegistry).flatMap((track) => track.units.map((unit) => ({ track: track.slug, unit: unit.slug })))
 }
 
 export const dynamicParams = false
 
-export default function UnitPage({ params }: { params: { track: keyof typeof tracks; unit: string } }) {
-  const track = tracks[params.track]
-  const unit = track?.units.find((entry) => entry.slug === params.unit)
+export default async function UnitPage({ params }: { params: Promise<{ track: string; unit: string }> }) {
+  const { track: trackSlug, unit: unitSlug } = await params
+  const track = trackRegistry[trackSlug]
+  const unit = getUnit(trackSlug, unitSlug)
   if (!track || !unit) notFound()
+
   return (
     <div className='space-y-8'>
       <div>
         <h1 className='text-4xl'>{unit.title}</h1>
-        <p className='mt-4 text-[var(--text-secondary)]'>{unit.summary}</p>
+        <p className='mt-4 max-w-3xl text-[var(--text-secondary)]'>{unit.summary}</p>
       </div>
+      <ProgressTracker completed={0} total={unit.sections.length} accuracy={0} recommendation={unit.shared ? 'Use this shared unit before branching into track-specific work.' : 'Work through each section in order and use practice until you clear 90%.'} />
       <div className='grid gap-4'>
-        {unit.topics.length ? unit.topics.map((topic) => (
-          <Card key={topic.id}>
-            <h2 className='text-2xl'>{topic.title}</h2>
-            <p className='mt-2 text-sm text-[var(--text-secondary)]'>{topic.summary}</p>
-          </Card>
-        )) : <Card><p className='text-sm text-[var(--text-secondary)]'>This unit roadmap is scaffolded for contributors and will expand with additional lessons.</p></Card>}
+        {unit.sections.map((section, index) => <SectionCard key={section.id} trackSlug={track.slug} unitSlug={unit.slug} index={index} section={section} />)}
       </div>
-      <Link href={`/${track.slug}/${unit.slug}/practice`}><Button>Start practice</Button></Link>
+      <Card>
+        <p className='text-sm text-[var(--text-secondary)]'>Each section includes a conceptual page, a math tie-in segment on the same page, and unlimited adaptive practice with a move-on recommendation once your accuracy exceeds 90%.</p>
+      </Card>
     </div>
   )
 }

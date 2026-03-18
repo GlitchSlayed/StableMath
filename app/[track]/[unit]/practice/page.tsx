@@ -1,11 +1,23 @@
-import { PracticeExperience } from '@/components/practice/PracticeExperience'
+import { notFound } from 'next/navigation'
+import { AdaptivePractice } from '@/components/practice/AdaptivePractice'
+import { getUnit, trackRegistry } from '@/content/tracks'
 
 export function generateStaticParams() {
-  return Object.entries({ engineering: ['unit1-calc1'], 'cs-ml-ai': ['unit2-probability', 'unit3-optimization'] }).flatMap(([track, units]) => units.map((unit) => ({ track, unit })))
+  return Object.values(trackRegistry).flatMap((track) => track.units.map((unit) => ({ track: track.slug, unit: unit.slug })))
 }
 
 export const dynamicParams = false
 
-export default function PracticePage() {
-  return <PracticeExperience />
+export default async function PracticePage({ params }: { params: Promise<{ track: string; unit: string }> }) {
+  const { track: trackSlug, unit: unitSlug } = await params
+  const unit = getUnit(trackSlug, unitSlug)
+  if (!unit) notFound()
+
+  return (
+    <AdaptivePractice
+      title={`${unit.title} mixed practice`}
+      skills={unit.sections.flatMap((section) => section.practiceSkills)}
+      moveOnThreshold={90}
+    />
+  )
 }

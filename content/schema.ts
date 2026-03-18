@@ -1,11 +1,26 @@
 import { z } from 'zod'
 
-export const topicSchema = z.object({
+export const sourceSchema = z.object({
+  label: z.string(),
+  href: z.string(),
+  note: z.string()
+})
+
+export const practiceSkillSchema = z.object({
+  label: z.string(),
+  templateIds: z.array(z.string())
+})
+
+export const subsectionSchema = z.object({
   id: z.string(),
+  slug: z.string(),
   title: z.string(),
   summary: z.string(),
-  lessonPath: z.string(),
-  practiceTemplateIds: z.array(z.string())
+  conceptualOverview: z.array(z.string()),
+  mathConnections: z.array(z.string()),
+  sources: z.array(sourceSchema),
+  practiceSkills: z.array(practiceSkillSchema),
+  moveOnThreshold: z.number().min(0).max(100)
 })
 
 export const unitSchema = z.object({
@@ -15,7 +30,8 @@ export const unitSchema = z.object({
   summary: z.string(),
   order: z.number().int().nonnegative(),
   estimatedMinutes: z.number().int().positive(),
-  topics: z.array(topicSchema)
+  shared: z.boolean().default(false),
+  sections: z.array(subsectionSchema)
 })
 
 export const trackSchema = z.object({
@@ -24,20 +40,11 @@ export const trackSchema = z.object({
   title: z.string(),
   audience: z.string(),
   description: z.string(),
-  sharedTopicIds: z.array(z.string()),
   units: z.array(unitSchema)
 })
 
-export const lessonSchema = z.object({
-  title: z.string(),
-  topicId: z.string(),
-  track: z.enum(['engineering', 'cs-ml-ai', 'shared']),
-  summary: z.string(),
-  objectives: z.array(z.string()),
-  practiceTemplateIds: z.array(z.string())
-})
-
-export type Topic = z.infer<typeof topicSchema>
+export type Source = z.infer<typeof sourceSchema>
+export type PracticeSkill = z.infer<typeof practiceSkillSchema>
+export type Subsection = z.infer<typeof subsectionSchema>
 export type Unit = z.infer<typeof unitSchema>
 export type Track = z.infer<typeof trackSchema>
-export type Lesson = z.infer<typeof lessonSchema>

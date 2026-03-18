@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  typedRoutes: true
+  trailingSlash: true
 }
 
 export default nextConfig
