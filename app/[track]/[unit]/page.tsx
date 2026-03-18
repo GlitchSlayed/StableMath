@@ -9,6 +9,8 @@ export function generateStaticParams() {
   return Object.values(tracks).flatMap((track) => track.units.map((unit) => ({ track: track.slug, unit: unit.slug })))
 }
 
+export const dynamicParams = false
+
 export default function UnitPage({ params }: { params: { track: keyof typeof tracks; unit: string } }) {
   const track = tracks[params.track]
   const unit = track?.units.find((entry) => entry.slug === params.unit)
