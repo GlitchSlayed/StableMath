@@ -1,6 +1,6 @@
 # StableMath
 
-StableMath is a production-minded, open-source math learning website built with Next.js 14, TypeScript, Tailwind CSS v4, KaTeX, Zustand, Framer Motion, Vitest, and Playwright. It is designed for deterministic instruction: every lesson, hint, question, and validator is hand-authored.
+StableMath is a production-minded, open-source math learning website built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, KaTeX, Zustand, Framer Motion, Vitest, and Playwright. It is designed for deterministic instruction: every lesson, hint, question, and validator is hand-authored.
 
 ## Features
 
@@ -12,9 +12,12 @@ StableMath is a production-minded, open-source math learning website built with 
 ## Getting started
 
 ```bash
+nvm use
 npm install
 npm run dev
 ```
+
+StableMath now targets Node.js `24.14.0`, which is the latest Node 24 Active LTS release as of March 18, 2026.
 
 ## Architecture
 
@@ -51,7 +54,7 @@ StableMath is configured for static export, so it can be deployed on Vercel's fr
 ### Recommended Vercel project settings
 
 - Framework preset: `Next.js`
-- Node.js version: `20.x`
+- Node.js version: `24.x`
 - Production branch: `main` (or your default branch)
 - Root directory: repository root
 

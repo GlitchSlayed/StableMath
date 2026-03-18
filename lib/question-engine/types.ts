@@ -47,7 +47,7 @@ export interface QuestionTemplate {
   type: QuestionType
   generate: (rng: RNG) => GeneratedQuestion
   validate: (userAnswer: unknown, generated: GeneratedQuestion) => ValidationResult
-  hints: [string, string, string]
+  hints: readonly [string, string, string]
 }
 
 export interface SessionQuestionRecord {
