@@ -8,8 +8,9 @@ export function generateStaticParams() {
 
 export const dynamicParams = false
 
-export default function PracticePage({ params }: { params: { track: string; unit: string } }) {
-  const unit = getUnit(params.track, params.unit)
+export default async function PracticePage({ params }: { params: Promise<{ track: string; unit: string }> }) {
+  const { track: trackSlug, unit: unitSlug } = await params
+  const unit = getUnit(trackSlug, unitSlug)
   if (!unit) notFound()
 
   return (

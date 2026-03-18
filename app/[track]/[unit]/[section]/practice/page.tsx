@@ -10,8 +10,9 @@ export function generateStaticParams() {
 
 export const dynamicParams = false
 
-export default function SectionPracticePage({ params }: { params: { track: string; unit: string; section: string } }) {
-  const section = getSection(params.track, params.unit, params.section)
+export default async function SectionPracticePage({ params }: { params: Promise<{ track: string; unit: string; section: string }> }) {
+  const { track: trackSlug, unit: unitSlug, section: sectionSlug } = await params
+  const section = getSection(trackSlug, unitSlug, sectionSlug)
   if (!section) notFound()
 
   return <AdaptivePractice title={section.title} skills={section.practiceSkills} moveOnThreshold={section.moveOnThreshold} />

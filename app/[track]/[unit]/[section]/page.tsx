@@ -13,10 +13,11 @@ export function generateStaticParams() {
 
 export const dynamicParams = false
 
-export default function SectionPage({ params }: { params: { track: string; unit: string; section: string } }) {
-  const track = trackRegistry[params.track]
-  const unit = getUnit(params.track, params.unit)
-  const section = getSection(params.track, params.unit, params.section)
+export default async function SectionPage({ params }: { params: Promise<{ track: string; unit: string; section: string }> }) {
+  const { track: trackSlug, unit: unitSlug, section: sectionSlug } = await params
+  const track = trackRegistry[trackSlug]
+  const unit = getUnit(trackSlug, unitSlug)
+  const section = getSection(trackSlug, unitSlug, sectionSlug)
   if (!track || !unit || !section) notFound()
 
   return (

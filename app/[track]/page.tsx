@@ -9,8 +9,9 @@ export function generateStaticParams() {
 
 export const dynamicParams = false
 
-export default function TrackPage({ params }: { params: { track: string } }) {
-  const track = trackRegistry[params.track]
+export default async function TrackPage({ params }: { params: Promise<{ track: string }> }) {
+  const { track: trackSlug } = await params
+  const track = trackRegistry[trackSlug]
   if (!track) notFound()
 
   const totalSections = track.units.reduce((sum, unit) => sum + unit.sections.length, 0)
