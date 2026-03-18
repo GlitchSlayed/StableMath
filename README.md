@@ -42,7 +42,7 @@ StableMath is configured to deploy on Vercel using the standard Next.js build ou
 5. Leave the build settings at their defaults, or confirm these values:
    - Install command: `npm install`
    - Build command: `npm run build`
-   - Output directory: leave unset (Vercel will use the default Next.js build output)
+   - Output directory: `.next` (the repository config also enforces this for Vercel)
 6. Click **Deploy**.
 
 ### What to expect
