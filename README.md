@@ -1,6 +1,6 @@
 # StableMath
 
-StableMath is a production-minded, open-source math learning website built with Next.js 14, TypeScript, Tailwind CSS v4, KaTeX, Zustand, Framer Motion, Vitest, and Playwright. It is designed for deterministic instruction: every lesson, hint, question, and validator is hand-authored.
+StableMath is a production-minded, open-source math learning website built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, KaTeX, Zustand, Framer Motion, Vitest, and Playwright. It is designed for deterministic instruction: every lesson, hint, question, and validator is hand-authored.
 
 ## Features
 
@@ -12,9 +12,12 @@ StableMath is a production-minded, open-source math learning website built with 
 ## Getting started
 
 ```bash
+nvm use
 npm install
 npm run dev
 ```
+
+StableMath now targets the Node.js 24 Active LTS line. Use the `.nvmrc` file to stay on the latest compatible 24.x release locally.
 
 ## Architecture
 
@@ -30,7 +33,7 @@ See `content-guide.md` for curriculum additions and `question-guide.md` for new 
 
 ## Deploying to Vercel (free Hobby plan)
 
-StableMath is configured for static export, so it can be deployed on Vercel's free Hobby tier with no server runtime.
+StableMath is configured to deploy on Vercel using the standard Next.js build output while still pre-rendering its content statically.
 
 1. Push this repository to GitHub.
 2. Create a free Vercel account and choose **Add New Project**.
@@ -39,7 +42,7 @@ StableMath is configured for static export, so it can be deployed on Vercel's fr
 5. Leave the build settings at their defaults, or confirm these values:
    - Install command: `npm install`
    - Build command: `npm run build`
-   - Output directory: `out`
+   - Output directory: `.next` (the repository config also enforces this for Vercel)
 6. Click **Deploy**.
 
 ### What to expect
@@ -51,7 +54,7 @@ StableMath is configured for static export, so it can be deployed on Vercel's fr
 ### Recommended Vercel project settings
 
 - Framework preset: `Next.js`
-- Node.js version: `20.x`
+- Node.js version: `24.x`
 - Production branch: `main` (or your default branch)
 - Root directory: repository root
 
