@@ -1,0 +1,11 @@
+Vectors and matrices matter because many real problems involve several quantities changing together. A force has components, a dataset has many features, and a model has many parameters. Scalar arithmetic is too cramped for that world. Linear algebra gives us a language that treats whole collections of related quantities as single mathematical objects.
+
+One intuitive point of view treats a vector as an arrow. In physics and engineering, this is often the right first picture because direction and magnitude both matter. Velocity, force, and electric field are easier to reason about when you imagine orientation in space. The arrow perspective makes geometric ideas like angle, projection, and orthogonality feel concrete.
+
+A second point of view treats a vector as an ordered list of measurements. This is often the more natural ML perspective. A user profile, an image embedding, or a row of sensor readings may not look like an arrow in physical space, but it is still a vector because each coordinate carries information in a fixed slot. Meaning comes from position in the list, not from drawing it on paper.
+
+Matrices then become the operators that act on vectors. In geometry they can rotate, stretch, reflect, or project. In data science they can aggregate features, encode transitions, or represent linear layers in a model. Thinking of a matrix as an action rather than just a rectangle of numbers is one of the biggest conceptual upgrades students can make.
+
+This topic is also where coordinate systems become intellectually useful rather than merely procedural. The same physical vector can be expressed in different bases, and the same dataset can be described with different feature sets. Choosing coordinates well can simplify a problem dramatically. That is why eigenvectors, principal components, and orthonormal bases show up in both mechanics and ML.
+
+The larger lesson is that linear algebra gives structure to complexity. Instead of tracking dozens of separate scalar equations, we package them into vector and matrix expressions that reveal pattern. That compression is not cosmetic. It exposes symmetry, makes computation efficient, and prepares the way for optimization and multivariable calculus.

@@ -1,0 +1,11 @@
+A limit is calculus learning how to ask a better question. Instead of asking for the value of a function exactly at a point, it asks what value the function is approaching nearby. That shift matters because many important models become interesting precisely where direct substitution fails, where a formula changes pieces, or where a physical parameter approaches an operating threshold.
+
+One point of view is cinematic. Imagine replaying a process frame by frame as the input gets closer and closer to a target. The limit captures the trend of the outputs during that approach. This perspective is especially useful in engineering, where measurements are often approximate and what matters is the nearby behavior, not just one isolated point.
+
+A second point of view is algebraic simplification. Some expressions hide their true behavior behind a removable problem, such as a factor that makes direct substitution produce $0/0$. By simplifying before evaluating, we reveal the underlying trend. This teaches that indeterminate forms are not final answers; they are signals that more structure is waiting to be uncovered.
+
+A third point of view is local modeling. Limits let us describe whether a system behaves smoothly enough for later tools like derivatives to make sense. If a quantity jumps abruptly, the limit from the left may not match the limit from the right. Continuity is therefore not just a formal checkbox. It encodes whether a model behaves coherently around an operating point.
+
+Continuity also helps connect mathematics to trust. Engineers want formulas that do not predict impossible teleportation in position or sudden unexplained jumps in temperature. ML practitioners care about continuity because smooth objectives and activations often lead to more stable optimization. A continuous model is not always the right model, but continuity provides a powerful baseline expectation.
+
+The conceptual climax is that limits are the doorway to calculus itself. They let us define derivatives as limits of difference quotients and integrals as limits of sums. Without the notion of approaching, we would have formulas but not a rigorous language for instantaneous change or accumulation from infinitely many tiny pieces.

@@ -16,8 +16,8 @@ export const subsectionSchema = z.object({
   slug: z.string(),
   title: z.string(),
   summary: z.string(),
-  conceptualOverview: z.array(z.string()),
-  mathConnections: z.array(z.string()),
+  conceptualContentPath: z.string(),
+  mathContentPath: z.string(),
   sources: z.array(sourceSchema),
   practiceSkills: z.array(practiceSkillSchema),
   moveOnThreshold: z.number().min(0).max(100)
