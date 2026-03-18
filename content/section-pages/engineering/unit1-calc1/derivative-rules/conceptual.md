@@ -1,0 +1,11 @@
+The derivative measures sensitivity. It answers the question: if I nudge the input a tiny amount, how does the output respond right now? In engineering, that can mean how fast position changes with time, how current changes with voltage, or how stress responds to strain. In ML, it can mean how the loss changes when a parameter changes. The unifying idea is local responsiveness.
+
+One point of view is motion. If a position function tells where an object is, then its derivative tells how fast that position is changing at an instant. This is the physical interpretation many students meet first, and it remains powerful because it keeps the symbols attached to real behavior. Velocity and acceleration are not separate mysteries; they are successive derivatives of position.
+
+A second point of view is local linear approximation. Near a point, many smooth functions behave almost like lines. The derivative is the slope of that best nearby line. This perspective explains why derivatives are useful far beyond motion: they let us approximate, estimate, and control complicated systems using a simpler local picture.
+
+A third point of view is sensitivity analysis. In a model with many assumptions, the derivative tells which inputs matter most at the current operating point. Engineers use that to understand tolerances and stability. ML practitioners use it to train models, because gradients reveal how parameter changes will affect error. The derivative is therefore both descriptive and actionable.
+
+Derivative rules are important because first principles alone are too slow for realistic work. Once the limit definition establishes what a derivative means, the power, product, quotient, and chain rules let us scale up to composite formulas that arise in actual models. The rules are not arbitrary tricks; each one reflects a structural pattern in how functions combine.
+
+The final conceptual shift is paying attention to units and meaning. If displacement is measured in meters and time in seconds, then the derivative has units of meters per second. If a loss function changes per parameter update, the derivative has a different interpretation. Carrying units and context helps students avoid the trap of treating derivatives as purely symbolic decoration.

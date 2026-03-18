@@ -1,0 +1,7 @@
+First-order differential equations show up when the present state of a system is enough to determine its immediate future. Cooling depends on the current temperature gap. Tank mixing depends on the current concentration. Population growth depends on the current population size. In each case, the equation encodes a local rule that continuously updates the system.
+
+One useful point of view is feedback. The derivative tells you how the system is responding right now, and the right-hand side tells you what information drives that response. If the response is proportional to the current state, then growth or decay compounds over time. If the response is proportional to a gap from equilibrium, then the system tends to relax toward balance.
+
+A second point of view is modeling discipline. Writing a first-order equation forces you to name the state variable clearly, identify units, and explain what assumptions let the rate depend only on the current state. That process is often more valuable than the final formula because it reveals what has been simplified and what phenomena have been left out.
+
+The engineering payoff is that many apparently different applications share the same mathematical skeleton. A single separable equation form can describe capacitor discharge, Newtonian cooling, or a medication concentration in the bloodstream. Recognizing that shared structure makes transfer much easier.
