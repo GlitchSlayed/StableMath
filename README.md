@@ -17,7 +17,7 @@ npm install
 npm run dev
 ```
 
-StableMath now targets Node.js `24.14.0`, which is the latest Node 24 Active LTS release as of March 18, 2026.
+StableMath now targets the Node.js 24 Active LTS line. Use the `.nvmrc` file to stay on the latest compatible 24.x release locally.
 
 ## Architecture
 
